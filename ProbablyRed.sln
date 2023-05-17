@@ -5,6 +5,18 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "probablyred.client", "ProbablyRed.Client\probablyred.client.esproj", "{71B73397-6CF2-4650-82E5-5B69D5CD9198}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProbablyRed.Service.Core", "ProbablyRed.Service.Core\ProbablyRed.Service.Core.csproj", "{6C0141C4-845C-45D2-AB18-0C233B71661A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{057D2F61-3501-4E93-B3DF-A23CAB6455C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F78F3D3C-9E27-45B4-ADA3-A511F2375CCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProbablyRed.Service.Core.Tests", "ProbablyRed.Service.Core.Tests\ProbablyRed.Service.Core.Tests.csproj", "{391CE543-2331-4367-B928-C696D502AC58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{EEB66E71-3A0D-403D-B3AE-ABEC0C0849CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProbablyRed.Common", "ProbablyRed.Common\ProbablyRed.Common.csproj", "{2359F8DE-539F-4CCA-B934-7E5332329AEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,9 +29,27 @@ Global
 		{71B73397-6CF2-4650-82E5-5B69D5CD9198}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71B73397-6CF2-4650-82E5-5B69D5CD9198}.Release|Any CPU.Build.0 = Release|Any CPU
 		{71B73397-6CF2-4650-82E5-5B69D5CD9198}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6C0141C4-845C-45D2-AB18-0C233B71661A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C0141C4-845C-45D2-AB18-0C233B71661A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C0141C4-845C-45D2-AB18-0C233B71661A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C0141C4-845C-45D2-AB18-0C233B71661A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{391CE543-2331-4367-B928-C696D502AC58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{391CE543-2331-4367-B928-C696D502AC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{391CE543-2331-4367-B928-C696D502AC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{391CE543-2331-4367-B928-C696D502AC58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2359F8DE-539F-4CCA-B934-7E5332329AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2359F8DE-539F-4CCA-B934-7E5332329AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2359F8DE-539F-4CCA-B934-7E5332329AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2359F8DE-539F-4CCA-B934-7E5332329AEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{71B73397-6CF2-4650-82E5-5B69D5CD9198} = {057D2F61-3501-4E93-B3DF-A23CAB6455C8}
+		{6C0141C4-845C-45D2-AB18-0C233B71661A} = {F78F3D3C-9E27-45B4-ADA3-A511F2375CCA}
+		{391CE543-2331-4367-B928-C696D502AC58} = {F78F3D3C-9E27-45B4-ADA3-A511F2375CCA}
+		{2359F8DE-539F-4CCA-B934-7E5332329AEE} = {EEB66E71-3A0D-403D-B3AE-ABEC0C0849CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {48EE35FA-8B23-4855-B18F-53C2550003AA}

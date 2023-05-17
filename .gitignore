@@ -1,1 +1,9 @@
 .vs/*
+/ProbablyRed.Service.Core/bin/*
+/ProbablyRed.Service.Core/obj
+/ProbablyRed.Service.Core.Tests/obj
+/ProbablyRed.Service.Core.Tests/bin/*
+/ProbablyRed.Common/bin/*
+/ProbablyRed.Common/obj
+/ProbablyRed.Service.Core.Tests/TestResults/*
+/probablyred.client/probablyred.client.esproj.user
