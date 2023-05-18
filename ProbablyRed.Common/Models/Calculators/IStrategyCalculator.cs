@@ -6,5 +6,6 @@
         string CalculationName { get; }
         string CalculationDescription { get; }
         IEnumerable<CalculatorValidationResult> Validate();
+        IEnumerable<CalculatorInput> InputProperties { get; }
     }
 }

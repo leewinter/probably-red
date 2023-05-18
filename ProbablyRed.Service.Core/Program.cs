@@ -1,4 +1,9 @@
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddSerilog();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -7,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+var loggerFactory = app.Services.GetService<ILoggerFactory>();
+loggerFactory.AddFile(builder.Configuration["Logging:LogFilePath"].ToString());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
