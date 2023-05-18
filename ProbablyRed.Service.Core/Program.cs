@@ -26,6 +26,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseCors(options => options.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+
 app.Run();
 
 public partial class Program { }
