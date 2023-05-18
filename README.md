@@ -7,7 +7,7 @@ Foundation framework for a probability calculator
 ### Startup
 
 Client and server currently being launched via VS with the following configuration
-![Multi Project Startup Config](docs\images\multi-project-startup.png)
+![Multi Project Startup Config](docs/images/multi-project-startup.png)
 
 ### Logs
 
