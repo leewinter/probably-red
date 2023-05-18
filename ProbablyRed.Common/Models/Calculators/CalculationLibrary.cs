@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace ProbablyRed.Common.Models.Calculators
 {

@@ -1,9 +1,4 @@
 ﻿using ProbablyRed.Common.Models.Calculators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProbablyRed.Common.Tests.Models.Calculators
 {

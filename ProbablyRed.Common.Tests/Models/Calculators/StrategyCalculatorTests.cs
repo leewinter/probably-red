@@ -1,11 +1,5 @@
-﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel.Utilities;
-using ProbablyRed.Common.Models.Calculators;
+﻿using ProbablyRed.Common.Models.Calculators;
 using ProbablyRed.Common.Models.Calculators.Calculations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProbablyRed.Common.Tests.Models.Calculators
 {

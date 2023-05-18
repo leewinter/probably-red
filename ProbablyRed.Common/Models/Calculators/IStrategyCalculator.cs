@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ProbablyRed.Common.Models.Calculators
+﻿namespace ProbablyRed.Common.Models.Calculators
 {
     public interface IStrategyCalculator
     {
