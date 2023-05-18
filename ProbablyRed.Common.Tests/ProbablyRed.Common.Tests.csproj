@@ -20,8 +20,4 @@
     <ProjectReference Include="..\ProbablyRed.Common\ProbablyRed.Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>
