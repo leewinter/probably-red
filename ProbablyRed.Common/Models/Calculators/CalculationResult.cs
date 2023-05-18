@@ -2,6 +2,7 @@
 
 namespace ProbablyRed.Common.Models.Calculators
 {
+    // Empty constructor to assist deserialization
     public class CalculatorValidationResult : ValidationResult
     {
         public CalculatorValidationResult() : base("")
@@ -15,7 +16,6 @@ namespace ProbablyRed.Common.Models.Calculators
         }
     }
 
-    [Serializable]
     public struct CalculationResult
     {
         public bool Success { get; set; }
