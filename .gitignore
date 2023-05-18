@@ -7,3 +7,5 @@
 /ProbablyRed.Common/obj
 /ProbablyRed.Service.Core.Tests/TestResults/*
 /probablyred.client/probablyred.client.esproj.user
+/ProbablyRed.Common.Tests/obj
+/ProbablyRed.Common.Tests/bin/*
