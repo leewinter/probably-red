@@ -8,10 +8,12 @@ export const useProbabilityCalculatorLibrary = () => {
   const [availableCalculators, setAvailableCalculators] = useState<StrategyCalculator[]>([]);
   const [calculationResult, setCalculationResult] = useState<CalculationResult>();
 
+  const API_URL = `${process.env.REACT_APP_API_BASE_URL}/Probability`;
+
   const { isLoading: calculatorListLoading } = useQuery({
     queryKey: ['probabilityCalculators'],
     queryFn: async () => {
-      return await fetch('http://localhost:5199/Probability');
+      return await fetch(API_URL);
     },
     refetchOnWindowFocus: false,
     onSuccess: async (response) => {
@@ -27,7 +29,7 @@ export const useProbabilityCalculatorLibrary = () => {
 
   const { mutate: requestCalculation, isLoading: calculationLoading } = useMutation({
     mutationFn: async (request: StrategyCalculator) => {
-      return await fetch('http://localhost:5199/Probability', {
+      return await fetch(API_URL, {
         method: 'POST',
         headers: {
           Accept: 'application/json',

@@ -6,14 +6,25 @@
       "request": "launch",
       "name": "localhost (Edge)",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env"
     },
     {
       "type": "chrome",
       "request": "launch",
       "name": "localhost (Chrome)",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch via NPM",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start"],
+      "envFile": "${workspaceFolder}/.env",
+      "port": 3000
     }
   ]
 }
