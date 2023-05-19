@@ -1,6 +1,11 @@
+import { CalculationHistory } from '../types/calculation-result.interface';
 import { ChangeEvent } from 'react';
+import { InputProperty } from '../types/strategy-calculator.interface';
 
-const CalculationHistory = (props: { calculationHistory: any; handleHistorySelect: any }) => {
+const CalculationHistoryDisplay = (props: {
+  calculationHistory: CalculationHistory[];
+  handleHistorySelect: (hist: CalculationHistory) => void;
+}) => {
   const { calculationHistory, handleHistorySelect } = props;
 
   if (!calculationHistory.length) return null;
@@ -10,11 +15,11 @@ const CalculationHistory = (props: { calculationHistory: any; handleHistorySelec
       <h4>History</h4>
       <select
         onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-          const value = event.target.value;
+          const value = parseInt(event.target.value);
           handleHistorySelect(calculationHistory[value]);
         }}
       >
-        {calculationHistory.map((hist: any, index: number) => {
+        {calculationHistory.map((hist: CalculationHistory, index: number) => {
           return (
             <option
               key={index}
@@ -22,8 +27,8 @@ const CalculationHistory = (props: { calculationHistory: any; handleHistorySelec
               className={hist.calculationResult.success ? 'success' : 'error'}
             >
               {hist.calculationResult.calculationStrategy}
-              {`(${hist.calculationRequest.InputProperties.map((p: any) => {
-                return hist.calculationRequest[p.Name];
+              {`(${hist.calculationRequest.InputProperties.map((p: InputProperty) => {
+                return (hist.calculationRequest as any)[p.Name]; // Once again dynamic overload caught me out
               })})`}
             </option>
           );
@@ -33,4 +38,4 @@ const CalculationHistory = (props: { calculationHistory: any; handleHistorySelec
   );
 };
 
-export default CalculationHistory;
+export default CalculationHistoryDisplay;

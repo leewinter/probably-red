@@ -1,10 +1,12 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 
+import { CalculationResult } from '../types/calculation-result.interface';
+import { StrategyCalculator } from '../types/strategy-calculator.interface';
 import { useState } from 'react';
 
 export const useProbabilityCalculatorLibrary = () => {
-  const [availableCalculators, setAvailableCalculators] = useState<any[]>([]);
-  const [calculationResult, setCalculationResult] = useState<any>();
+  const [availableCalculators, setAvailableCalculators] = useState<StrategyCalculator[]>([]);
+  const [calculationResult, setCalculationResult] = useState<CalculationResult>();
 
   const { isLoading: calculatorListLoading } = useQuery({
     queryKey: ['probabilityCalculators'],
@@ -24,7 +26,7 @@ export const useProbabilityCalculatorLibrary = () => {
   });
 
   const { mutate: requestCalculation, isLoading: calculationLoading } = useMutation({
-    mutationFn: async (request: any) => {
+    mutationFn: async (request: StrategyCalculator) => {
       return await fetch('http://localhost:5199/Probability', {
         method: 'POST',
         headers: {

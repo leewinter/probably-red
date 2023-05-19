@@ -1,4 +1,6 @@
-const CalculationResult = (props: { calculationResult: any }) => {
+import { CalculationResult, ValidationResult } from '../types/calculation-result.interface';
+
+const CalculationResultDisplay = (props: { calculationResult: CalculationResult | undefined }) => {
   const { calculationResult } = props;
 
   return (
@@ -26,14 +28,16 @@ const CalculationResult = (props: { calculationResult: any }) => {
                 <td>{calculationResult.result}</td>
               </tr>
               {calculationResult.validationErrors.length
-                ? calculationResult.validationErrors.map(({ errorMessage }: any, index: number) => {
-                    return (
-                      <tr key={index} className="error">
-                        <th>{index === 0 ? 'Errors' : null}</th>
-                        <td>{errorMessage}</td>
-                      </tr>
-                    );
-                  })
+                ? calculationResult.validationErrors.map(
+                    ({ errorMessage }: ValidationResult, index: number) => {
+                      return (
+                        <tr key={index} className="error">
+                          <th>{index === 0 ? 'Errors' : null}</th>
+                          <td>{errorMessage}</td>
+                        </tr>
+                      );
+                    },
+                  )
                 : null}
             </tbody>
           </table>
@@ -43,4 +47,4 @@ const CalculationResult = (props: { calculationResult: any }) => {
   );
 };
 
-export default CalculationResult;
+export default CalculationResultDisplay;

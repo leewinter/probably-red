@@ -1,26 +1,28 @@
+import { CalculationHistory, CalculationResult } from '../types/calculation-result.interface';
 import { ChangeEvent, useEffect, useState } from 'react';
 
-import CalculationHistory from './CalculationHistory';
-import CalculationResult from './CalculationResult';
+import CalculationHistoryDisplay from './CalculationHistoryDisplay';
+import CalculationResultDisplay from './CalculationResultDisplay';
 import Calculator from './Calculator';
 import CalculatorSelect from './CalculatorSelect';
+import { StrategyCalculator } from '../types/strategy-calculator.interface';
 import { useProbabilityCalculatorLibrary } from '../hooks/use-probability-calculator-library';
 
 const ProbabilityCalculator = () => {
-  const [chosenCalculator, setChosenCalculator] = useState<any>();
+  const [chosenCalculator, setChosenCalculator] = useState<StrategyCalculator>();
   const [selectedCalculator, setSelectedCalculator] = useState<string>('');
   // Our request to mutate and send
-  const [calculationRequest, setCalculationRequest] = useState<any>();
+  const [calculationRequest, setCalculationRequest] = useState<StrategyCalculator>();
   // Our history of calculations
-  const [calculationResults, setCalculationResults] = useState<any[]>([]);
+  const [calculationResults, setCalculationResults] = useState<CalculationHistory[]>([]);
   // Holds last result or overriden by history
-  const [resultToDisplay, setResultToDisplay] = useState<any>();
+  const [resultToDisplay, setResultToDisplay] = useState<CalculationResult>();
 
   const { availableCalculators, requestCalculation, calculationResult, calculationLoading } =
     useProbabilityCalculatorLibrary();
 
   useEffect(() => {
-    if (calculationResult) {
+    if (calculationResult && calculationRequest) {
       setCalculationResults([...calculationResults, { calculationRequest, calculationResult }]);
       setResultToDisplay(calculationResult);
     }
@@ -38,20 +40,21 @@ const ProbabilityCalculator = () => {
   const handleParameterChange = (parameterName: string, event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
 
-    setCalculationRequest({
-      ...calculationRequest,
-      [parameterName]: value.length ? value : 0,
-    });
+    if (calculationRequest)
+      setCalculationRequest({
+        ...calculationRequest,
+        [parameterName]: value.length ? value : 0,
+      });
   };
 
   const handleCalculate = () => {
-    requestCalculation(calculationRequest);
+    if (calculationRequest) requestCalculation(calculationRequest);
   };
 
   const handleHistorySelect = ({
     calculationRequest: calculationRequestHistoryItem,
     calculationResult: calculationResultHistoryItem,
-  }: any) => {
+  }: CalculationHistory) => {
     setSelectedCalculator(calculationRequestHistoryItem.CalculationName);
     const foundCalc = availableCalculators.find(
       (calc) => calc.CalculationName === calculationRequestHistoryItem.CalculationName,
@@ -77,9 +80,9 @@ const ProbabilityCalculator = () => {
           calculationLoading={calculationLoading}
           handleCalculate={handleCalculate}
         />
-        <CalculationResult calculationResult={resultToDisplay} />
+        <CalculationResultDisplay calculationResult={resultToDisplay} />
       </div>
-      <CalculationHistory
+      <CalculationHistoryDisplay
         calculationHistory={calculationResults}
         handleHistorySelect={handleHistorySelect}
       />

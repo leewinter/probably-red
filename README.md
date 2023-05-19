@@ -16,11 +16,11 @@ _eg ...ProbablyRed\ProbablyRed.Service.Core\Logs\log-\*.txt_
 
 ## ToDo
 
-- [ ] camalcase all response type and handle dynamic input property setting
-- [ ] allow for dynamic result instead of just decimal
-- [ ] create typescript types
-- [ ] add client side cypress tests
-- [ ] move all urls to env or setting files
+- [ ] Camalcase all response type and handle dynamic input property setting
+- [ ] Allow for dynamic result instead of just decimal
+- [x] Create typescript types
+- [ ] Add client side cypress tests
+- [ ] Move all urls to env or setting files
 
 ## Improvements
 
