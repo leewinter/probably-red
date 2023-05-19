@@ -6,7 +6,7 @@ const CalculationResultDisplay = (props: { calculationResult: CalculationResult 
   return (
     <div>
       {calculationResult ? (
-        <div>
+        <div className="container">
           <table>
             <tbody>
               <tr>

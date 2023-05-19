@@ -21,6 +21,7 @@ _eg ...ProbablyRed\ProbablyRed.Service.Core\Logs\log-\*.txt_
 - [x] Create typescript types
 - [ ] Add client side cypress tests
 - [x] Move all urls to env or setting files
+- [x] Add error output
 
 ## Improvements
 

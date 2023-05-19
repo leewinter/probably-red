@@ -18,7 +18,7 @@ const Calculator = (props: {
   return (
     <div>
       {chosenCalculator ? (
-        <div>
+        <div className="container">
           {chosenCalculator.InputProperties.map((input: InputProperty) => {
             return (
               <Fragment key={input.Name}>

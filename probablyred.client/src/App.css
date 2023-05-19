@@ -13,12 +13,20 @@
 .content {
   display: flex;
   flex-direction: row;
+  gap: 1rem;
 }
 
-.container {
+.feature {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+}
+
+.container {
+  background-color: darkgrey;
+  padding: 3px;
+  border: 1px solid black;
 }
 
 .error {

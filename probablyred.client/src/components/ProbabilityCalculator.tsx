@@ -5,6 +5,7 @@ import CalculationHistoryDisplay from './CalculationHistoryDisplay';
 import CalculationResultDisplay from './CalculationResultDisplay';
 import Calculator from './Calculator';
 import CalculatorSelect from './CalculatorSelect';
+import ErrorOutput from './ErrorOutput';
 import { StrategyCalculator } from '../types/strategy-calculator.interface';
 import { useProbabilityCalculatorLibrary } from '../hooks/use-probability-calculator-library';
 
@@ -17,9 +18,16 @@ const ProbabilityCalculator = () => {
   const [calculationResults, setCalculationResults] = useState<CalculationHistory[]>([]);
   // Holds last result or overriden by history
   const [resultToDisplay, setResultToDisplay] = useState<CalculationResult>();
+  // Hold any api errors
+  const [requestErrors, setRequestErrors] = useState<string[]>([]);
 
-  const { availableCalculators, requestCalculation, calculationResult, calculationLoading } =
-    useProbabilityCalculatorLibrary();
+  const {
+    availableCalculators,
+    requestCalculation,
+    calculationResult,
+    calculationLoading,
+    error: apiError,
+  } = useProbabilityCalculatorLibrary();
 
   useEffect(() => {
     if (calculationResult && calculationRequest) {
@@ -28,6 +36,10 @@ const ProbabilityCalculator = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [calculationResult]);
+
+  useEffect(() => {
+    if (apiError) setRequestErrors([...requestErrors, apiError]);
+  }, [apiError]);
 
   const handleCalculatorChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
@@ -65,7 +77,7 @@ const ProbabilityCalculator = () => {
   };
 
   return (
-    <div className="container">
+    <div className="feature">
       <CalculatorSelect
         selectedCalculator={selectedCalculator}
         handleCalculatorChange={handleCalculatorChange}
@@ -86,6 +98,7 @@ const ProbabilityCalculator = () => {
         calculationHistory={calculationResults}
         handleHistorySelect={handleHistorySelect}
       />
+      <ErrorOutput errors={requestErrors} />
     </div>
   );
 };
