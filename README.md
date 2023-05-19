@@ -20,7 +20,7 @@ _eg ...ProbablyRed\ProbablyRed.Service.Core\Logs\log-\*.txt_
 - [ ] Allow for dynamic result instead of just decimal
 - [x] Create typescript types
 - [ ] Add client side cypress tests
-- [ ] Move all urls to env or setting files
+- [x] Move all urls to env or setting files
 
 ## Improvements
 
