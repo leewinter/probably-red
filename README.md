@@ -26,4 +26,5 @@ _eg ...ProbablyRed\ProbablyRed.Service.Core\Logs\log-\*.txt_
 
 - [ ] Add Tailwind
 - [ ] Add Storybook
-- [ ] Add Github CI/CD
+- [x] Add Github CI
+- [ ] Add Github CD
