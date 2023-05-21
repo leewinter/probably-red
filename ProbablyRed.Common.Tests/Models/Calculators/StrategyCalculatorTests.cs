@@ -94,5 +94,28 @@ namespace ProbablyRed.Common.Tests.Models.Calculators
             Assert.IsTrue(result.Any());
             Assert.AreEqual(result.Count(), errorCount);
         }
+
+        [TestMethod]
+        [DataRow("0.0", "0.0", "0.0", "0.0")]
+        [DataRow("0.5", "0.5", "1", "0.25")]
+        [DataRow("0.5", "0.75", "0.2", "0.075")]
+        [DataRow("0.1", "0.1", "0.9", "0.009")]
+        public void Calculate_AdditionalParameters_SuccessfulResult(string paramA, string paramB, string paramC, string calcResult)
+        {
+            var parameterA = decimal.Parse(paramA);
+            var parameterB = decimal.Parse(paramB);
+            var parameterC = decimal.Parse(paramC);
+            var expectedResult = decimal.Parse(calcResult);
+            var knownStrategy = "CombinedProbabilityTripple";
+
+            IStrategyCalculator sut = new CombinedProbabilityTripple() { ProbabilityA = parameterA, ProbabilityB = parameterB, ProbabilityC = parameterC };
+
+            var result = sut.Calculate();
+
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(result.Result, expectedResult);
+            Assert.IsFalse(result.ValidationErrors.Any());
+            Assert.AreEqual(result.CalculationStrategy, knownStrategy);
+        }
     }
 }
