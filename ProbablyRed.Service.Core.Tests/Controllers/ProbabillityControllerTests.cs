@@ -36,9 +36,9 @@ namespace ProbablyRed.Service.Core.Tests.Controllers
 
             var converter = new ExpandoObjectConverter();
             var jsonString = await response.Content.ReadAsStringAsync();
-            dynamic dynamicJsonResult = JsonConvert.DeserializeObject<List<ExpandoObject>>(jsonString, converter);
+            dynamic? dynamicJsonResult = JsonConvert.DeserializeObject<List<ExpandoObject>>(jsonString, converter);
 
-            foreach (var cal in dynamicJsonResult)
+            foreach (var cal in dynamicJsonResult ?? throw new ArgumentNullException("Deserialize of Probability Calculations should not be null"))
             {
                 var CalculationName = cal.CalculationName;
                 Assert.IsNotNull(CalculationName, "CalculationName returned from ProbabilityController should not be null");
@@ -72,8 +72,8 @@ namespace ProbablyRed.Service.Core.Tests.Controllers
             var jsonString = await getCalculatorsResponse.Content.ReadAsStringAsync();
             var dynamicJsonResult = JsonConvert.DeserializeObject<List<ExpandoObject>>(jsonString, converter);
 
-            var combinedProbability = dynamicJsonResult.Where(n=> (n as dynamic).CalculationName == knownStrategy).FirstOrDefault();
-            var calculator = JsonConvert.DeserializeObject<CombinedProbability>(JsonConvert.SerializeObject(combinedProbability));
+            var combinedProbability = dynamicJsonResult?.Where(n=> (n as dynamic).CalculationName == knownStrategy).FirstOrDefault();
+            var calculator = JsonConvert.DeserializeObject<CombinedProbability>(JsonConvert.SerializeObject(combinedProbability)) ?? throw new ArgumentNullException("Deserialize of CombinedProbability should not be null");
 
             calculator.ProbabilityA = parameterA;
             calculator.ProbabilityB = parameterB;
@@ -113,8 +113,8 @@ namespace ProbablyRed.Service.Core.Tests.Controllers
             var jsonString = await getCalculatorsResponse.Content.ReadAsStringAsync();
             var dynamicJsonResult = JsonConvert.DeserializeObject<List<ExpandoObject>>(jsonString, converter);
 
-            var combinedProbability = dynamicJsonResult.Where(n => (n as dynamic).CalculationName == knownStrategy).FirstOrDefault();
-            var calculator = JsonConvert.DeserializeObject<CombinedProbability>(JsonConvert.SerializeObject(combinedProbability));
+            var combinedProbability = dynamicJsonResult?.Where(n => (n as dynamic).CalculationName == knownStrategy).FirstOrDefault();
+            var calculator = JsonConvert.DeserializeObject<CombinedProbability>(JsonConvert.SerializeObject(combinedProbability)) ?? throw new ArgumentNullException("Deserialize of CombinedProbability should not be null");
 
             calculator.ProbabilityA = parameterA;
             calculator.ProbabilityB = parameterB;

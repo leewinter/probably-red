@@ -15,7 +15,7 @@ namespace ProbablyRed.Service.Core.Controllers
         private void LogCalculation(CalculationResult result, dynamic calculator) {
             try
             {
-                _logger.LogInformation(@"IStrategyCalculator.Calculate() called. Response: CalculationStrategy[{CalculationStrategy}] Properties[{Properties}] Result[{Result}]", result.CalculationStrategy, string.Join(" ", (calculator.InputProperties as IEnumerable<CalculatorInput>).Select(n => string.Format("{0} - {1}", n.Name, calculator.GetType().GetProperty(n.Name).GetValue(calculator, null))).ToList()), result.Result);
+                _logger.LogInformation(@"IStrategyCalculator.Calculate() called. Response: CalculationStrategy[{CalculationStrategy}] Properties[{Properties}] Result[{Result}]", result.CalculationStrategy, string.Join(" ", ((IEnumerable<CalculatorInput>)calculator.InputProperties).Select(n => string.Format("{0} - {1}", n.Name, calculator.GetType().GetProperty(n.Name).GetValue(calculator, null))).ToList()), result.Result);
             }
             catch (Exception ex)
             {

@@ -59,7 +59,7 @@ namespace ProbablyRed.Common.Tests.Models.Calculators
             Assert.IsFalse(result.Success);
             Assert.AreEqual(result.Result, 0.0m);
             Assert.AreEqual(result.ValidationErrors.Count(), 1);
-            Assert.AreEqual(result.ValidationErrors.FirstOrDefault().ErrorMessage, "ProbabilityA must be within 0 and 1");
+            Assert.AreEqual(result.ValidationErrors.FirstOrDefault()?.ErrorMessage, "ProbabilityA must be within 0 and 1");
         }
 
         [TestMethod]
@@ -72,7 +72,7 @@ namespace ProbablyRed.Common.Tests.Models.Calculators
             Assert.IsFalse(result.Success);
             Assert.AreEqual(result.Result, 0.0m);
             Assert.AreEqual(result.ValidationErrors.Count(), 1);
-            Assert.AreEqual(result.ValidationErrors.FirstOrDefault().ErrorMessage, "ProbabilityB must be within 0 and 1");
+            Assert.AreEqual(result.ValidationErrors.FirstOrDefault()?.ErrorMessage, "ProbabilityB must be within 0 and 1");
         }
 
         /// <summary>
