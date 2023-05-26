@@ -17,9 +17,9 @@ namespace ProbablyRed.Common.Tests.Models.Calculators
         {
             var expectedCalculator = new CombinedProbability() { ProbabilityA = 0.25m, ProbabilityB = 0.25m };
             var expectedBody = JsonConvert.SerializeObject(expectedCalculator);
-            dynamic payload = JsonConvert.DeserializeObject<dynamic>(expectedBody);
+            dynamic? payload = JsonConvert.DeserializeObject<dynamic>(expectedBody);
 
-            var result = CalculationDeserializer.Deserialize(payload) as CombinedProbability;
+            var result = CalculationDeserializer.Deserialize(payload) as CombinedProbability ?? throw new ArgumentNullException("Deserialize of CombinedProbability should not be null");
 
             Assert.AreEqual(expectedCalculator.ProbabilityA, result.ProbabilityA);
             Assert.AreEqual(expectedCalculator.ProbabilityB, result.ProbabilityB);
@@ -31,7 +31,7 @@ namespace ProbablyRed.Common.Tests.Models.Calculators
         {
             var unexpectedInput = new CalculationResult() { };
             var expectedBody = JsonConvert.SerializeObject(unexpectedInput);
-            dynamic payload = JsonConvert.DeserializeObject<dynamic>(expectedBody);
+            dynamic? payload = JsonConvert.DeserializeObject<dynamic>(expectedBody);
 
             CalculationDeserializer.Deserialize(payload);
         }
